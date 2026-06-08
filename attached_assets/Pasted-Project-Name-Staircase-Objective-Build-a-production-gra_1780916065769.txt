@@ -1,0 +1,238 @@
+Project Name: Staircase
+
+Objective:
+
+Build a production-grade Rust library called Staircase for edge gateways used in Building Automation Systems (BAS) and Industrial IoT. The library must provide a unified API for collecting, normalizing, processing, and forwarding data from multiple field protocols.
+
+Architecture Requirements:
+
+1. Workspace Structure
+
+Create a Rust workspace with the following crates:
+
+* staircase-core
+* staircase-bacnet
+* staircase-modbus
+* staircase-opcua
+* staircase-mqtt
+* staircase-knx
+* staircase-storage
+* staircase-rules
+* staircase-connectors
+
+The core crate must not depend on any protocol implementation crate.
+
+2. Core Traits
+
+Design protocol-independent traits:
+
+* ProtocolDriver
+* DataCollector
+* DataPublisher
+* RuleEngine
+* StorageEngine
+
+Every protocol implementation must conform to the same ProtocolDriver trait.
+
+3. Unified Data Model
+
+Create normalized structures:
+
+DataPoint
+Device
+Tag
+TagValue
+Alarm
+Event
+
+Example DataPoint fields:
+
+* source
+* protocol
+* device_id
+* tag_name
+* value
+* quality
+* timestamp
+
+The application using Staircase should never need protocol-specific code.
+
+4. Async Runtime
+
+Use Tokio.
+
+Requirements:
+
+* Each device runs in its own async task.
+* Polling intervals configurable per device.
+* Support thousands of concurrently polled points.
+* Graceful shutdown support.
+* Task supervision and automatic restart.
+
+5. Protocol Support
+
+Initial implementations:
+
+BACnet/IP
+Modbus TCP
+MQTT Client
+
+Design the architecture so future protocols can be added without modifying existing code.
+
+Future targets:
+
+* OPC UA
+* KNX
+* DALI
+* SNMP
+* M-Bus
+* IEC 61850
+* DLMS/COSEM
+
+6. Configuration System
+
+Use YAML configuration.
+
+Example:
+
+devices:
+
+* name: ahu_1
+  protocol: bacnet
+  address: 192.168.1.10
+  poll_interval: 5
+
+* name: meter_1
+  protocol: modbus
+  address: 192.168.1.20
+  poll_interval: 10
+
+Configuration must be hot-reloadable.
+
+7. Rule Engine
+
+Implement a lightweight edge rule engine.
+
+Examples:
+
+room_temp > 28 => fan = true
+
+humidity > 80 => alarm
+
+Rules should be loaded from configuration and executed locally without cloud connectivity.
+
+8. Storage Layer
+
+Implement store-and-forward functionality.
+
+Requirements:
+
+* Local buffering
+* Offline operation
+* Replay when connectivity returns
+* Data persistence across restarts
+
+Use RocksDB.
+
+Provide a generic StorageEngine abstraction.
+
+9. Output Connectors
+
+Implement connectors for:
+
+* MQTT
+* Kafka
+* NATS
+* PostgreSQL
+* TimescaleDB
+* InfluxDB
+* REST API
+
+Each connector must consume normalized DataPoint structures.
+
+10. Observability
+
+Use:
+
+* tracing
+* tracing-subscriber
+* prometheus
+
+Expose:
+
+* polling latency
+* protocol errors
+* queue sizes
+* reconnect attempts
+* throughput
+
+11. Error Handling
+
+Use:
+
+* thiserror
+* anyhow
+
+Provide structured errors for:
+
+* Connection failures
+* Protocol errors
+* Timeout errors
+* Configuration errors
+* Serialization errors
+
+12. Testing
+
+Create:
+
+* Unit tests
+* Integration tests
+* Mock protocol drivers
+
+Target at least 80% test coverage.
+
+13. Example Gateway Application
+
+Include a runnable example:
+
+examples/gateway.rs
+
+The example should:
+
+* Load YAML configuration
+* Start protocol collectors
+* Normalize data
+* Store locally
+* Publish to MQTT
+
+14. Documentation
+
+Generate comprehensive Rust documentation.
+
+Include:
+
+* Architecture overview
+* Sequence diagrams
+* Example usage
+* Extension guide for creating new protocol drivers
+
+15. Non-Functional Requirements
+
+* Rust stable toolchain
+* Tokio async ecosystem
+* Zero unsafe code unless absolutely necessary
+* High-performance and low-memory footprint
+* Suitable for ARM edge gateways
+* Linux-first design
+* Production-quality code organization
+
+Deliverables:
+
+* Complete Cargo workspace
+* Buildable source code
+* README
+* Example configurations
+* Tests
+* Architecture documentation
+
+The code should follow clean architecture principles and be designed as a reusable industrial-grade framework comparable to ThingsBoard Gateway, EMQX Neuron, or Eclipse Kura, but implemented as a modular Rust library.
