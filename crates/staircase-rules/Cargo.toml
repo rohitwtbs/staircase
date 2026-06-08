@@ -1,0 +1,9 @@
+[package]
+name = "staircase-rules"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Edge rule engine for Staircase (implementation pending)"
+
+[dependencies]
+staircase-core = { workspace = true }

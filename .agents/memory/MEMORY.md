@@ -1,0 +1,1 @@
+- [Staircase workspace layout](staircase-workspace-layout.md) — repo root is both workspace root and umbrella binary so `cargo run` stays green; framework crates under `crates/`, core never depends on protocol crates.

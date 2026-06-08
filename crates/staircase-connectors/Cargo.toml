@@ -1,0 +1,9 @@
+[package]
+name = "staircase-connectors"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Output connectors (MQTT, Kafka, NATS, SQL, REST, ...) for Staircase (implementation pending)"
+
+[dependencies]
+staircase-core = { workspace = true }

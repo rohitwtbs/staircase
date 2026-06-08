@@ -1,0 +1,9 @@
+[package]
+name = "staircase-bacnet"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "BACnet/IP protocol driver for Staircase (implementation pending)"
+
+[dependencies]
+staircase-core = { workspace = true }

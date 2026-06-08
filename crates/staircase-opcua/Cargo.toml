@@ -1,0 +1,9 @@
+[package]
+name = "staircase-opcua"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "OPC UA protocol driver for Staircase (future protocol)"
+
+[dependencies]
+staircase-core = { workspace = true }

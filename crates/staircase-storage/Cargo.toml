@@ -1,0 +1,9 @@
+[package]
+name = "staircase-storage"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Store-and-forward storage layer for Staircase (implementation pending)"
+
+[dependencies]
+staircase-core = { workspace = true }

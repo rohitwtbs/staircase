@@ -1,0 +1,9 @@
+[package]
+name = "staircase-knx"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "KNX protocol driver for Staircase (future protocol)"
+
+[dependencies]
+staircase-core = { workspace = true }

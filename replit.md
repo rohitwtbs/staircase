@@ -1,20 +1,33 @@
 # staircase
 
-Different building automation protocols implemented in Rust (i.e. BACnet, OPC UA, KNX, etc.).
+A modular building-automation / industrial-IoT edge gateway framework implemented in Rust. It provides a unified API for collecting, normalizing, processing, and forwarding data from multiple field protocols (BACnet, Modbus, OPC UA, MQTT, KNX, etc.).
 
 ## Overview
 
-This is a Rust project (Cargo-based). It is currently an early-stage scaffold — a single binary crate that builds and runs in the Replit environment. There is no frontend or web server; it runs as a console application.
+This is a Cargo **workspace**. The root crate (`staircase`) is a small umbrella binary; the framework itself is split into focused member crates under `crates/`. There is no frontend or web server; it runs as a console application.
+
+The protocol-independent `staircase-core` crate is the foundation every other crate builds on. It defines the unified data model, the core traits, structured errors, the configuration model, async runtime/supervision scaffolding, and observability hooks. `staircase-core` does NOT depend on any protocol implementation crate.
 
 ## Project Structure
 
-- `Cargo.toml` — crate manifest (package name: `staircase`, edition 2024)
-- `src/main.rs` — binary entry point
+- `Cargo.toml` — workspace manifest (shared dependency versions in `[workspace.dependencies]`)
+- `src/main.rs` — umbrella `staircase` binary (status/entry point)
+- `crates/staircase-core` — data model, traits, config, runtime, observability (implemented)
+- `crates/staircase-bacnet` — BACnet/IP driver (stub)
+- `crates/staircase-modbus` — Modbus TCP driver (stub)
+- `crates/staircase-opcua` — OPC UA driver (stub, future)
+- `crates/staircase-mqtt` — MQTT client driver (stub)
+- `crates/staircase-knx` — KNX driver (stub, future)
+- `crates/staircase-storage` — RocksDB store-and-forward (stub)
+- `crates/staircase-rules` — edge rule engine (stub)
+- `crates/staircase-connectors` — output connectors (stub)
 
 ## Development
 
 - Toolchain: Rust stable (installed as a Replit module)
 - Build: `cargo build`
+- Test: `cargo test`
+- Lint: `cargo clippy --workspace --all-targets`
 - Run: `cargo run` (configured as the "Start application" workflow, console output)
 
 ## User Preferences
