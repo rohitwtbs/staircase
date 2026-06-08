@@ -1,2 +1,3 @@
 - [Staircase workspace layout](staircase-workspace-layout.md) — repo root is both workspace root and umbrella binary so `cargo run` stays green; framework crates under `crates/`, core never depends on protocol crates.
 - [Protocol driver patterns](protocol-driver-patterns.md) — shared conventions for ProtocolDriver crates: Mutex-wrap non-Sync handles, from_config, resilient poll, strict binary decode + correlation, in-process fixture tests.
+- [Crate delivery: blueprint-first](crate-blueprint-directive.md) — user implements remaining crates gradually; deliver compiling scaffolds (design + types + trait skeleton via todo!/not_implemented), not full impls.

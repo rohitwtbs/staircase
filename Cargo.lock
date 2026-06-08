@@ -811,7 +811,10 @@ dependencies = [
 name = "staircase-storage"
 version = "0.1.0"
 dependencies = [
+ "async-trait",
+ "serde",
  "staircase-core",
+ "tracing",
 ]
 
 [[package]]

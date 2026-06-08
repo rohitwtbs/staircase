@@ -3,7 +3,14 @@ name = "staircase-storage"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Store-and-forward storage layer for Staircase (implementation pending)"
+description = "Store-and-forward storage layer for Staircase (RocksDB-backed; blueprint)"
 
 [dependencies]
 staircase-core = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+tracing = { workspace = true }
+
+# Actual RocksDB implementation is filled in gradually. When implementing the
+# blueprint below, add the backing store dependency here, e.g.:
+# rocksdb = "0.22"
