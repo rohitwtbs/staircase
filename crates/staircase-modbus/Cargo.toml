@@ -3,7 +3,11 @@ name = "staircase-modbus"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Modbus TCP protocol driver for Staircase (implementation pending)"
+description = "Modbus TCP protocol driver for Staircase"
 
 [dependencies]
 staircase-core = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+tokio-modbus = { workspace = true }
+tracing = { workspace = true }

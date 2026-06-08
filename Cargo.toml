@@ -32,3 +32,5 @@ tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
 chrono = { version = "0.4", features = ["serde"] }
 tokio-util = "0.7"
 uuid = { version = "1", features = ["v4"] }
+tokio-modbus = { version = "0.16", default-features = false, features = ["tcp"] }
+rumqttc = "0.24"

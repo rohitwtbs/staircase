@@ -3,7 +3,10 @@ name = "staircase-bacnet"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "BACnet/IP protocol driver for Staircase (implementation pending)"
+description = "BACnet/IP protocol driver for Staircase"
 
 [dependencies]
 staircase-core = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+tracing = { workspace = true }

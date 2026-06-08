@@ -3,7 +3,11 @@ name = "staircase-mqtt"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "MQTT client protocol driver for Staircase (implementation pending)"
+description = "MQTT client protocol driver for Staircase"
 
 [dependencies]
 staircase-core = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+rumqttc = { workspace = true }
+tracing = { workspace = true }
