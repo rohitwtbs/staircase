@@ -3,7 +3,11 @@ name = "staircase-rules"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Edge rule engine for Staircase (implementation pending)"
+description = "Edge rule engine for Staircase (blueprint)"
 
 [dependencies]
 staircase-core = { workspace = true }
+serde = { workspace = true }
+serde_yaml = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }

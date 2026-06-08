@@ -19,7 +19,7 @@ The protocol-independent `staircase-core` crate is the foundation every other cr
 - `crates/staircase-mqtt` — MQTT client driver (implemented: inbound topic subscription)
 - `crates/staircase-knx` — KNX driver (stub, future)
 - `crates/staircase-storage` — RocksDB store-and-forward (blueprint: design, config, `StorageEngine` skeleton; impl filled in gradually)
-- `crates/staircase-rules` — edge rule engine (stub)
+- `crates/staircase-rules` — edge rule engine (blueprint: rule/condition/action config model, `RuleEngine` skeleton; eval filled in gradually)
 - `crates/staircase-connectors` — output connectors (stub)
 
 ## Development

@@ -804,7 +804,11 @@ dependencies = [
 name = "staircase-rules"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
+ "serde",
+ "serde_yaml",
  "staircase-core",
+ "tracing",
 ]
 
 [[package]]
