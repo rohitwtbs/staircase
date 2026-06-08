@@ -726,7 +726,14 @@ dependencies = [
 name = "staircase"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
+ "serde_json",
+ "staircase-connectors",
  "staircase-core",
+ "staircase-rules",
+ "staircase-storage",
+ "tokio",
+ "tracing",
 ]
 
 [[package]]

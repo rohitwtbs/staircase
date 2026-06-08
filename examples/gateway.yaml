@@ -1,0 +1,62 @@
+# Example Staircase gateway configuration.
+#
+# Used by `cargo run --example gateway`. Demonstrates BACnet, Modbus, and MQTT
+# devices, a couple of edge rules, a local store-and-forward buffer, an MQTT
+# output connector, and observability settings.
+
+devices:
+  - name: ahu_1
+    protocol: bacnet
+    address: 192.168.1.10:47808
+    poll_interval: 5
+    tags:
+      - name: room_temp
+        address: ai:1
+        data_type: f32
+      - name: supply_fan
+        address: bv:2
+        data_type: bool
+
+  - name: power_meter
+    protocol: modbus
+    address: 192.168.1.20:502
+    poll_interval: 10
+    tags:
+      - name: voltage
+        address: holding:40001
+        data_type: u32
+      - name: current
+        address: holding:40003
+        data_type: f32
+
+  - name: sensor_hub
+    protocol: mqtt
+    address: 192.168.1.30:1883
+    poll_interval: 5
+    tags:
+      - name: humidity
+        address: building/floor1/humidity
+        data_type: f32
+
+rules:
+  - name: fan_on_when_hot
+    condition: "room_temp > 28"
+    action: "supply_fan = true"
+  - name: high_humidity_alarm
+    condition: "humidity > 80"
+    action: "alarm"
+
+storage:
+  path: ./data/staircase-store
+  max_buffer: 100000
+
+connectors:
+  - name: cloud_mqtt
+    type: mqtt
+    settings:
+      url: "tcp://broker.example.com:1883"
+      topic: "staircase/data"
+
+observability:
+  metrics_address: "0.0.0.0:9100"
+  log_level: info

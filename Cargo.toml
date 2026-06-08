@@ -17,8 +17,20 @@ license = "MIT"
 [dependencies]
 staircase-core = { workspace = true }
 
+[dev-dependencies]
+tokio = { workspace = true }
+anyhow = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+staircase-storage = { workspace = true }
+staircase-rules = { workspace = true }
+staircase-connectors = { workspace = true }
+
 [workspace.dependencies]
 staircase-core = { path = "crates/staircase-core" }
+staircase-storage = { path = "crates/staircase-storage" }
+staircase-rules = { path = "crates/staircase-rules" }
+staircase-connectors = { path = "crates/staircase-connectors" }
 
 tokio = { version = "1", features = ["full"] }
 async-trait = "0.1"

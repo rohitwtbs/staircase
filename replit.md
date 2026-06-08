@@ -26,9 +26,10 @@ The protocol-independent `staircase-core` crate is the foundation every other cr
 
 - Toolchain: Rust stable (installed as a Replit module)
 - Build: `cargo build`
-- Test: `cargo test`
+- Test: `cargo test --workspace`
 - Lint: `cargo clippy --workspace --all-targets`
-- Run: `cargo run` (configured as the "Start application" workflow, console output)
+- Run: `cargo run --example gateway` (runnable end-to-end demo using `examples/gateway.yaml`; configured as the "Start application" workflow, console output). `cargo run` still launches the umbrella status binary.
+- Example gateway: `examples/gateway.rs` wires the full pipeline (collect → normalize → rules → store-and-forward → connectors) with real collection/metrics/payload-mapping and graceful blueprint handling for the storage/rules/connectors stages. End-to-end integration coverage lives in `tests/gateway_integration.rs`.
 
 ## User Preferences
 
