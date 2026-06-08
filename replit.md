@@ -20,7 +20,7 @@ The protocol-independent `staircase-core` crate is the foundation every other cr
 - `crates/staircase-knx` — KNX driver (stub, future)
 - `crates/staircase-storage` — RocksDB store-and-forward (blueprint: design, config, `StorageEngine` skeleton; impl filled in gradually)
 - `crates/staircase-rules` — edge rule engine (blueprint: rule/condition/action config model, `RuleEngine` skeleton; eval filled in gradually)
-- `crates/staircase-connectors` — output connectors (stub)
+- `crates/staircase-connectors` — output connectors (blueprint: MQTT/Kafka/NATS/Postgres/Timescale/InfluxDB/REST `DataPublisher` skeletons; real shared payload mapping (JSON + InfluxDB line protocol); network I/O filled in gradually)
 
 ## Development
 

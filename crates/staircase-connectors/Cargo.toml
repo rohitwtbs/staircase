@@ -3,7 +3,22 @@ name = "staircase-connectors"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Output connectors (MQTT, Kafka, NATS, SQL, REST, ...) for Staircase (implementation pending)"
+description = "Output connectors (MQTT, Kafka, NATS, SQL, REST, ...) for Staircase (blueprint)"
 
 [dependencies]
 staircase-core = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+
+# Network/native client crates are added as the connectors are implemented.
+# Feature-gate heavy/native deps so the workspace stays buildable, e.g.:
+# [features]
+# mqtt = ["dep:rumqttc"]
+# kafka = ["dep:rdkafka"]
+# nats = ["dep:async-nats"]
+# postgres = ["dep:tokio-postgres"]
+# influx = ["dep:reqwest"]
+# rest = ["dep:reqwest"]
