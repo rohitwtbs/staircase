@@ -160,9 +160,10 @@ observability:
 `staircase-core` ships a lock-free [`Metrics`] registry shared across tasks,
 plus a serializable `MetricsSnapshot`. Tracked: poll count & latency, protocol
 errors, queue size, reconnect attempts, and throughput. Initialize structured
-logging with `init_tracing("info")` (honors `RUST_LOG`). The Prometheus
-exposition endpoint (configured via `observability.metrics_address`) is wired in
-the gateway layer.
+logging with `init_tracing("info")` (honors `RUST_LOG`). The example gateway
+prints a `MetricsSnapshot` as JSON. The Prometheus exposition endpoint
+(configured via `observability.metrics_address`) is a **blueprint** of the
+gateway layer, filled in gradually.
 
 ---
 

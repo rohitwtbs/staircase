@@ -1,7 +1,7 @@
 //! Observability hooks: `tracing` setup and metric handles.
 //!
-//! The concrete Prometheus exposition endpoint is wired up by the gateway /
-//! integration layer. This module provides:
+//! The concrete Prometheus exposition endpoint is a planned blueprint of the
+//! gateway / integration layer (filled in gradually). This module provides:
 //!
 //! - [`init_tracing`] to initialize a `tracing` subscriber.
 //! - [`Metrics`], a cheap, lock-free set of counters/gauges that every crate can
